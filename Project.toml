@@ -1,0 +1,4 @@
+name = "MDTools"
+uuid = "43c67cbd-36c0-4062-9abe-c90a21e659dc"
+authors = ["Teemu Järvinen <teemu.j.jarvinen@gmail.com>"]
+version = "0.1.0"
