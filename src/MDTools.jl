@@ -1,14 +1,24 @@
 module MDTools
 
-using  Zygote
+using Zygote
+using Unitful
+using UnitfulAtomic
+using Distances
+using LoopVectorization
 
+import Base.*
+import Base.+
 
 include("integrators.jl")
 include("atoms.jl")
 include("potentials.jl")
+include("system.jl")
+
 
 
 export AbstractMDIntegrator,
+       add!,
+       CubicBox,
        energy,
        force,
        LeapFrog,
@@ -16,7 +26,7 @@ export AbstractMDIntegrator,
 
 
 function force!(f, potential, coordinates)
-    f = - gradient(potential,coordinates)[1]
+    f .= - gradient(potential,coordinates)[1]
 end
 
 force(potential, coordinates) = - gradient(potential, coordinates)[1]
